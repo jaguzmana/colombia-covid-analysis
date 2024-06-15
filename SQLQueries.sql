@@ -1,9 +1,73 @@
--- Checking tables
--- SELECT TOP 10 *
--- FROM CovidVacinations;
+-- Data about COVID Deaths in Colombia
+SELECT *
+FROM [CovidDeaths]
+WHERE [location] = 'Colombia'
+ORDER BY [date];
 
--- SELECT TOP 10 *
--- FROM CovidDeaths;
+-- Death Rate Over Time
+SELECT
+    [location],
+    [date],
+    [population],
+    [total_cases],
+    [total_deaths],
+    ([total_deaths] / CAST([total_cases] AS FLOAT)) * 100 AS DeathRate
+FROM [CovidDeaths]
+WHERE [location] = 'Colombia'
+ORDER BY [date];
+
+-- MAX Death Rate
+SELECT TOP 1
+    [location],
+    [date],
+    [population],
+    [total_cases],
+    [total_deaths],
+    ROUND(([total_deaths] / CAST([total_cases] AS FLOAT)) * 100, 2) AS DeathRate
+FROM [CovidDeaths]
+WHERE [location] = 'Colombia'
+ORDER BY DeathRate DESC;
+
+-- Current Death Rate
+SELECT TOP 1
+    [location],
+    [date],
+    [population],
+    [total_cases],
+    [total_deaths],
+    CONCAT(ROUND(([total_deaths] / CAST([total_cases] AS FLOAT)) * 100, 2), '%') AS DeathRate
+FROM [CovidDeaths]
+WHERE [location] = 'Colombia'
+ORDER BY [date] DESC;
+
+-- Infection Rate Over Time
+SELECT
+    [location],
+    [date],
+    [population],
+    [total_cases],
+    [total_deaths],
+    ROUND(([total_cases] / CAST([population] AS FLOAT)) * 100, 2) AS InfectionRate
+FROM [CovidDeaths]
+WHERE [location] = 'Colombia'
+ORDER BY [date];
+
+-- Current Infection Rate
+SELECT TOP 1
+    [location],
+    [date],
+    [population],
+    [total_cases],
+    [total_deaths],
+    ROUND(([total_cases] / CAST([population] AS FLOAT)) * 100, 2) AS InfectionRate
+FROM [CovidDeaths]
+WHERE [location] = 'Colombia'
+ORDER BY [date] DESC;
+
+SELECT 
+
+
+-- SQL COURSE
 
 -- Data what we are going to use
 SELECT 
@@ -26,11 +90,11 @@ SELECT
     (total_deaths/CAST(total_cases AS FLOAT)) * 100 AS DeathRate
 FROM CovidDeaths
 WHERE Location = 'Colombia'
-ORDER BY 1, 2;
+ORDER BY 2;
 
 -- Looking at the Total Cases vs Population
 -- Show what percentage of population got COVID.
-SELECT 
+SELECT
     Location, 
     date, 
     total_cases, 
@@ -38,7 +102,7 @@ SELECT
     (total_cases/CAST(Population AS FLOAT)) * 100 AS InfectionRate
 FROM CovidDeaths
 WHERE Location = 'Colombia'
-ORDER BY 1, 2;
+ORDER BY 2 ASC;
 
 -- Countries with higest infection rate
 SELECT 
