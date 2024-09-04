@@ -69,4 +69,4 @@ The goal of this project is to conduct a COVID-19 analysis in Colombia using the
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact Information
-For questions or support, please open an issue in the [GitHub repository](https://github.com/jaguzmana/colombia-covid-analysis/issues) or reach out via [Twitter (now X)](https://x.com/jaguzmana_).
+For questions or support, please open an issue in the [GitHub repository](https://github.com/jaguzmana/colombia-covid-analysis/issues).
